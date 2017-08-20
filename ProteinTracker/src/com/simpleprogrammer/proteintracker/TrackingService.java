@@ -3,44 +3,22 @@ package com.simpleprogrammer.proteintracker;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.jmx.remote.internal.NotificationBufferFilter;
-
 public class TrackingService {
 	private int total;
 	private int goal;
 	private List<HistoryItem> history = new ArrayList<HistoryItem>();
 	private int historyId = 0;
-	private Notifier notifier;
-	
-	
-
-	public TrackingService(Notifier notifier) {
-		
-		this.notifier = notifier;
-	}
 
 	public void addProtein(int amount)
 	{
 		total += amount;
 		history.add(new HistoryItem(historyId++, amount, "add", total));
-		
-		if(total > goal)
-		{
-			boolean sendResult = notifier.send("goal met");
-			String historyMessage = "sent:goal met";
-			if(!sendResult)
-				historyMessage = "send_error:goal met";
-			history.add(new HistoryItem(historyId++, 0, historyMessage, total));
-		}
-			
 	}
 	
 	public void removeProtein(int amount)
 	{
 		total -= amount;
-		if(total <0)
-			
-			
+		if(total < 0)
 			total = 0;
 		
 		history.add(new HistoryItem(historyId++, amount, "subtract", total));
