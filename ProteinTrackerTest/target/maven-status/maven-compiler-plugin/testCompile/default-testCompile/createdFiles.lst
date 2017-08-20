@@ -1,0 +1,9 @@
+com\cli\ConsoleRunner.class
+com\cli\GoodTestSuite.class
+com\cli\ParameterizedTests.class
+com\cli\ProteinTrackerSuite.class
+com\cli\GoodTestCategory.class
+com\cli\TrackingServiceTest.class
+com\cli\TrackingServiceTheories.class
+com\cli\TestCase.class
+com\cli\BadTestCategory.class
